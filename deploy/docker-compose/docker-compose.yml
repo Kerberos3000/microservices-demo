@@ -2,7 +2,7 @@ version: '2'
 
 services:
   front-end:
-    image: weaveworksdemos/front-end:0.3.12
+    image: weaveworksdemos/front-end:master-f7775f58
     hostname: front-end
     restart: always
     cap_drop:
@@ -27,7 +27,7 @@ services:
     hostname: edge-router
     restart: always
   catalogue:
-    image: weaveworksdemos/catalogue:0.3.5
+    image: weaveworksdemos/catalogue:master-9de2c86e-normal
     hostname: catalogue
     restart: always
     cap_drop:
@@ -36,7 +36,7 @@ services:
       - NET_BIND_SERVICE
     read_only: true
   catalogue-db:
-    image: weaveworksdemos/catalogue-db:0.3.0
+    image: weaveworksdemos/catalogue-db:master-9de2c86e
     hostname: catalogue-db
     restart: always
     environment:
@@ -44,7 +44,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_DATABASE=socksdb
   carts:
-    image: weaveworksdemos/carts:0.4.8
+    image: weaveworksdemos/carts:master-1c6d09fb
     hostname: carts
     restart: always
     cap_drop:
@@ -70,7 +70,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   orders:
-    image: weaveworksdemos/orders:0.4.7
+    image: weaveworksdemos/orders:master-f8988a3d
     hostname: orders
     restart: always
     cap_drop:
@@ -96,7 +96,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   shipping:
-    image: weaveworksdemos/shipping:0.4.8
+    image: weaveworksdemos/shipping:master-ba362a4c
     hostname: shipping
     restart: always
     cap_drop:
@@ -109,7 +109,7 @@ services:
     environment:
       - JAVA_OPTS=-Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false
   queue-master:
-    image: weaveworksdemos/queue-master:0.3.1
+    image: weaveworksdemos/queue-master:master-b8bcfc79
     hostname: queue-master
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -134,7 +134,7 @@ services:
       - DAC_OVERRIDE
     read_only: true
   payment:
-    image: weaveworksdemos/payment:0.4.3
+    image: weaveworksdemos/payment:master-791d88d8
     hostname: payment
     restart: always
     cap_drop:
@@ -143,7 +143,7 @@ services:
       - NET_BIND_SERVICE
     read_only: true
   user:
-    image: weaveworksdemos/user:0.4.4
+    image: weaveworksdemos/user:master-a7ea6917
     hostname: user
     restart: always
     cap_drop:
@@ -154,7 +154,7 @@ services:
     environment:
       - MONGO_HOST=user-db:27017
   user-db:
-    image: weaveworksdemos/user-db:0.4.0
+    image: weaveworksdemos/user-db:master-a7ea6917
     hostname: user-db
     restart: always
     cap_drop:
@@ -167,7 +167,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   user-sim:
-    image: weaveworksdemos/load-test:0.1.1
+    image: weaveworksdemos/load-test:master-57a88289
     cap_drop:
       - all
     read_only: true
